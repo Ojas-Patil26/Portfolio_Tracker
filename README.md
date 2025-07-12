@@ -1,135 +1,97 @@
-## 🌌 Stock Price Checker
+# 🌌 Portfolio Tracker – Stock Price Checker
 
-A simple web app to check real-time stock prices using their ticker symbols (like AAPL or MSFT). It’s made with Python (Flask) for the backend and HTML/CSS/JavaScript for the frontend. The app also has a cool animated galaxy background made with Spline.
-
----
-
-## 🚀 What This App Does
-
-* Type in stock symbols (like AAPL, TSLA) separated by commas
-* Get the current price of each stock using Yahoo Finance data
-* Works on desktop and mobile
-* Clean UI with a galaxy-themed background ✨
+A clean and interactive web application to check live stock prices based on user input. Built with **Python (Flask)** for the backend and a responsive **HTML/CSS** frontend with 3D galaxy theming via **Spline**.
 
 ---
 
-## 🧰 What It's Made With
+## 🚀 Features
 
-**Frontend:**
-
-* HTML, CSS, and JavaScript
-* Spline (for the animated background)
-
-**Backend:**
-
-* Python
-* Flask
-* yfinance (for stock data)
+* 🔍 Fetch live stock prices via `yfinance`
+* 🧠 Backend built using **Flask**
+* 📟 Simple and elegant **HTML/CSS** interface
+* 🌌 3D background using **Spline**
+* ✅ Realtime price updates with clean UI
+* 📈 Accepts multiple tickers (comma-separated)
 
 ---
 
-## 🗂️ Folder Structure
+## 📂 Project Structure
 
 ```
-stock-price-checker/
-├── backend.py                 # Flask app (runs the server)
-├── fetch_stock_prices.py     # Code to fetch stock prices
+Portfolio_Tracking/
+├── app/
+│   ├── backend.py               # Flask backend
+│   └── fetch_stock_prices.py    # yfinance logic
 ├── templates/
-│   └── index.html            # HTML frontend
-└── static/
-    └── style.css             # CSS styling file
+│   └── index.html               # Main HTML page
+├── static/
+│   └── style.css                # CSS styling
+├── venv/                        # Virtual environment (ignored by Git)
+├── requirements.txt             # Python dependencies
+├── .gitignore
+├── LICENSE
+└── README.md
 ```
 
 ---
 
-## 🛠️ How to Run It (Step-by-Step)
+## ⚙️ Setup Instructions
 
-1. **Download the project** (or clone it if you're using GitHub):
+1. **Clone the Repository**
 
 ```bash
-https://github.com/your-username/stock-price-checker.git
-cd stock-price-checker
+git clone https://github.com/Ojas-Patil26/Portfolio_Tracker.git
+cd Portfolio_Tracker
 ```
 
-2. **(Optional)** Create a virtual environment:
+2. **Create & Activate Virtual Environment**
 
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
+python3 -m venv venv
+source venv/bin/activate  # For macOS/Linux
+venv\Scripts\activate     # For Windows
 ```
 
-3. **Install the required Python packages**:
+3. **Install Dependencies**
 
 ```bash
-pip install flask yfinance
+pip install -r requirements.txt
 ```
 
-4. **Run the app**:
+4. **Run the Flask App**
 
 ```bash
-python backend.py
+python app/backend.py
 ```
 
-5. **Open your browser** and go to:
+5. **Visit in Browser**
 
-```
-http://127.0.0.1:5000/
-```
+Go to: [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
 ---
 
-## 📡 API Info (For Developers)
+## 💠 Tech Stack
 
-**Endpoint:** `/api/prices` (POST)
-
-**Example Request:**
-
-```json
-{
-  "tickers": "AAPL, MSFT, TSLA"
-}
-```
-
-**Example Response:**
-
-```json
-{
-  "AAPL": "203.57",
-  "MSFT": "345.66",
-  "TSLA": "887.21"
-}
-```
+* **Frontend**: HTML, CSS, JavaScript, FontAwesome, Spline
+* **Backend**: Python, Flask
+* **Data API**: yfinance (Yahoo Finance)
 
 ---
 
-## 🖼️ UI Preview
+## 📸 Demo Preview
 
-* Enter stock tickers in a form
-* Click "Check Prices"
-* See prices listed below
-* Smooth and stylish look with animated galaxy background 🌌
+> *Include a screenshot or GIF here later if needed*
 
 ---
 
-## 🔮 Future Ideas
+## 📜 License
 
-* Show stock graphs
-* Let users save a portfolio
-* Toggle between dark and light mode
-* Add better error messages and validations
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-## 📃 License
+## 🤛\200d♂️ Author
 
-MIT License. You can use or improve this however you like.
-
----
-
-## 🙌 Built By
-
-Made by [Ojas Patil](https://github.com/Ojas-Patil26)
+Built with 💻 by [Ojas Patil](https://github.com/Ojas-Patil26)
 
 ---
-
-> "The stock market is a device for transferring money from the impatient to the patient." – Warren Buffett
