@@ -1,0 +1,23 @@
+from flask import Flask, request, jsonify, render_template
+from fetch_stock_prices import fetch_prices
+
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+@app.route("/api/prices", methods=["POST"])
+def api_prices():
+    data = request.get_json()
+    tickers = data.get("tickers", "")
+    if not tickers:
+        return jsonify({"error": "No such stock"}), 400
+
+    ticker_list = [ticker.strip() for ticker in tickers.split(",")]
+    stock_prices = fetch_prices(ticker_list)
+
+    return jsonify(stock_prices)
+
+if __name__ == "__main__":
+    app.run(debug=True)

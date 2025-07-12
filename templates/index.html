@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🌌 Stock Price Checker</title>
+
+  <!-- Font Awesome (for icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <!-- Spline 3D Viewer -->
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.22/build/spline-viewer.js"></script>
+
+  <style>
+    /* Reset and background */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+    }
+
+    body {
+      position: relative;
+      color: #ffffff;
+    }
+
+    /* Spline Background */
+    .spline-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+    }
+
+    /* Form and Results Styling */
+    h1 {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 2.5rem;
+      color: #ffffff;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .form-container, .results-container {
+      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 20px;
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 30px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    label {
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      background-color: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+
+    button {
+      padding: 12px;
+      background-color: #ffb703;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #fb8500;
+      transform: scale(1.05);
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(5px);
+    }
+
+    li.error {
+      color: #ff6b6b;
+      font-weight: bold;
+    }
+
+    #loading {
+      display: none;
+      text-align: center;
+      margin-top: 15px;
+      font-size: 1.2rem;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      input, button {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 🌌 3D Galaxy Background via Spline -->
+  <div class="spline-bg">
+    <spline-viewer loading-anim-type="spinner-small-dark" url="https://prod.spline.design/yVsD6rm0SdEQOUhb/scene.splinecode"></spline-viewer>
+  </div>
+
+  <!-- UI -->
+  <h1>Stock Price Checker</h1>
+
+  <div class="form-container">
+    <form id="stockForm" onsubmit="fetchStockPrices(event)">
+      <label for="stocks">Enter stock tickers (comma-separated):</label>
+      <input type="text" id="stocks" name="stocks" placeholder="e.g., AAPL, MSFT, TSLA" required>
+      <button type="submit"> Check Prices </button>
+      <div id="loading">⏳ Fetching prices...</div>
+    </form>
+  </div>
+
+  <div class="results-container">
+    <h2>Stock Prices</h2>
+    <ul id="results"></ul>
+  </div>
+
+  <!-- JS -->
+  <script>
+    async function fetchStockPrices(event) {
+      event.preventDefault();
+      const stocksInput = document.getElementById("stocks").value;
+      const requestData = { tickers: stocksInput };
+      const loading = document.getElementById("loading");
+      const resultsContainer = document.getElementById("results");
+
+      resultsContainer.innerHTML = "";
+      loading.style.display = "block";
+
+      try {
+        const response = await fetch("/api/prices", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(requestData)
+        });
+
+        const responseData = await response.json();
+        loading.style.display = "none";
+
+        if (response.ok) {
+          for (const [stock, price] of Object.entries(responseData)) {
+            const li = document.createElement("li");
+            li.textContent = `${stock}: ${price}`;
+            resultsContainer.appendChild(li);
+          }
+        } else {
+          const li = document.createElement("li");
+          li.textContent = responseData.error;
+          li.className = "error";
+          resultsContainer.appendChild(li);
+        }
+      } catch (error) {
+        loading.style.display = "none";
+        const li = document.createElement("li");
+        li.textContent = "❌ Error fetching data.";
+        li.className = "error";
+        resultsContainer.appendChild(li);
+        console.error(error);
+      }
+    }
+  </script>
+</body>
+</html>
