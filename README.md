@@ -79,8 +79,10 @@ Go to: [http://127.0.0.1:5000](http://127.0.0.1:5000)
 ---
 
 ## 📸 Demo Preview
+<img width="1470" height="835" alt="Screenshot 2025-07-12 at 11 15 52 PM" src="https://github.com/user-attachments/assets/093d5e8a-79bc-4d4d-9f9f-156a9b44f160" />
 
-> *Include a screenshot or GIF here later if needed*
+<img width="1470" height="833" alt="Screenshot 2025-07-12 at 11 16 34 PM" src="https://github.com/user-attachments/assets/7a19d15b-db58-4d00-8e2a-ebc1ed1a6da0" />
+
 
 ---
 
