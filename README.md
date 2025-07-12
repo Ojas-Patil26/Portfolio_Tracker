@@ -128,7 +128,7 @@ MIT License. You can use or improve this however you like.
 
 ## 🙌 Built By
 
-Made by [Ojas Patil](https://github.com/Ojas-Patil26) with love and curiosity ❤️
+Made by [Ojas Patil](https://github.com/Ojas-Patil26)
 
 ---
 
