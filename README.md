@@ -1,4 +1,4 @@
-**🌌 Stock Price Checker**
+## 🌌 Stock Price Checker
 
 A simple web app to check real-time stock prices using their ticker symbols (like AAPL or MSFT). It’s made with Python (Flask) for the backend and HTML/CSS/JavaScript for the frontend. The app also has a cool animated galaxy background made with Spline.
 
