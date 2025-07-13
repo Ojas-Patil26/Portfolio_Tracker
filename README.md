@@ -1,6 +1,6 @@
 # 🌌 Portfolio Tracker – Stock Price Checker
 
-A clean and interactive web application to check live stock prices based on user input. Built with **Python (Flask)** for the backend and a responsive **HTML/CSS** frontend with 3D galaxy theming via **Spline**.
+A clean and interactive web application to check live stock prices based on user input. Built with **Python (Flask)** for the backend and a responsive **HTML/CSS** frontend with 3D theming background via **Spline**.
 
 ---
 
