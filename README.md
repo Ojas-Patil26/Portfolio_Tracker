@@ -92,7 +92,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-## 🤛\200d♂️ Author
+## Author
 
 Built with 💻 by [Ojas Patil](https://github.com/Ojas-Patil26)
 
